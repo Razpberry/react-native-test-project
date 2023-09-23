@@ -1,19 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from 'react-native-elements';
-import { fonts } from 'react-native-elements/dist/config';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Header
+      placement='left'
         containerStyle={styles.header}
+        leftComponent={
+          <TouchableOpacity onPress={() => alert('Hello!')}>
+            
+          </TouchableOpacity>
+        }
         centerComponent={
           {
             text: 'My App',
-            style: { 
+            style: {
               color: '#ffffff',
-              fontSize: 50,
+              fontSize: 17,
               fontWeight: 'bold',
             }
           }
@@ -33,7 +39,6 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#034a50',
-    paddingBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
