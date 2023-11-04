@@ -1,7 +1,7 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Header } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -40,28 +40,30 @@ export default class App extends Component {
   render() {
     
     return (
-      <SafeAreaView style={styles.container}>
-        <Header
-          placement="left"
-          containerStyle={styles.header}
-          leftComponent={
-            <TouchableOpacity onPress={() => alert("Hello!")}>
-              <Ionicons name="menu" size={24} color="#ffffff" />
-            </TouchableOpacity>
-          }
-          centerComponent={{
-            text: "My Step Counter App",
-            style: {
-              color: "#ffffff",
-              fontSize: 17,
-              fontWeight: "bold",
-            },
-          }}
-        />
-        <View style={styles.content}>
-          <Text style={styles.text}>Steps: {this.state.steps}</Text>
-        </View>
-      </SafeAreaView>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <Header
+            placement="left"
+            containerStyle={styles.header}
+            leftComponent={
+              <TouchableOpacity onPress={() => alert("Hello!")}>
+                <Ionicons name="menu" size={24} color="#ffffff" />
+              </TouchableOpacity>
+            }
+            centerComponent={{
+              text: "My Step Counter App",
+              style: {
+                color: "#ffffff",
+                fontSize: 17,
+                fontWeight: "bold",
+              },
+            }}
+          />
+          <View style={styles.content}>
+            <Text style={styles.text}>Steps: {this.state.steps}</Text>
+          </View>
+        </SafeAreaView>
+      </SafeAreaProvider>
     );
   }
 }
